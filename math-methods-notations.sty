@@ -1,0 +1,55 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math-methods-notations}[2026/10/25 Mathematical Methods notation]
+
+\RequirePackage{notes-common}
+
+% A consuming course may override these targets before loading this package.
+\providecommand*{\complexNumbersRef}{math-methods::ch01::def:complex-number}
+\providecommand*{\realPartRef}{math-methods::ch01::def:real-part}
+\providecommand*{\imaginaryPartRef}{math-methods::ch01::def:imaginary-part}
+\providecommand*{\complexConjugateRef}{math-methods::ch01::def:complex-conjugate}
+\providecommand*{\complexConjugateNotationRef}{math-methods::ch01::conv:complex-conjugate-notation}
+
+% Use the local label when the target belongs to the document being built.
+% Other documents keep the project-qualified target, including overrides.
+\ExplSyntaxOn
+\cs_new_protected:Npn \__mathmethods_notation_link:nnn #1#2#3
+  {
+    \str_if_eq:eeTF {#3} { \notesProjectName :: \jobname :: #2 }
+      { \xref[#1]{#2} }
+      { \xref[#1]{#3} }
+  }
+\cs_new_eq:NN \mm@notationLink \__mathmethods_notation_link:nnn
+\ExplSyntaxOff
+
+\newcommand*{\CC}{%
+  \ensuremath{%
+    \mm@notationLink{\mathbb{C}}{def:complex-number}{\complexNumbersRef}%
+  }%
+}
+
+% These macros render only the operator head; write arguments in parentheses.
+\newcommand*{\RealPart}{%
+  \ensuremath{%
+    \mathop{\mm@notationLink{\mathrm{Re}}{def:real-part}{\realPartRef}}\nolimits
+  }%
+}
+
+\newcommand*{\ImagPart}{%
+  \ensuremath{%
+    \mathop{\mm@notationLink{\mathrm{Im}}{def:imaginary-part}{\imaginaryPartRef}}\nolimits
+  }%
+}
+
+\newcommand*{\Conj}{%
+  \ensuremath{%
+    \mathop{\mm@notationLink{\mathrm{Conj}}{def:complex-conjugate}{\complexConjugateRef}}\nolimits
+  }%
+}
+
+% Link only the star, keeping the input outside the notation hyperlink.
+\newcommand*{\conj}[1]{%
+  \ensuremath{%
+    {#1}^{\mm@notationLink{*}{conv:complex-conjugate-notation}{\complexConjugateNotationRef}}%
+  }%
+}

@@ -1,0 +1,46 @@
+.DS_Store
+
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+/.build/
+/*.pdf
+
+# Local authoring configuration and editor recovery files
+/.claude/
+*.swp
+*.swo
+
+# Additional SyncTeX and backup files
+*.synctex
+*.bak
+*.backup
+
+# Private course material
+/lecture_slides/
+/homework/
+
+# Local copies for notes-server registration
+/config.json
+/manifest.json
+
+# Additional LaTeX build artifacts
+*.dvi
+*.xdv
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.synctex(busy)
+*.synctex.gz(busy)
