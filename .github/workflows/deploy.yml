@@ -3,7 +3,7 @@ name: Push Notes
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "latex_target/**"
       - ".github/workflows/deploy.yml"
